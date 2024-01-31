@@ -1,0 +1,117 @@
+---
+execute:
+  eval: false
+---
+
+# Basic use of AWS S3 in R
+This capter introduces the basics of working with the S3 bucket in R.
+
+## Using AWS with GDAL and GDAL based R tools (Terra, Stars, sf, etc.)
+
+GDAL has special prefixes to access virtual filesystems like S3 and GCS buckets. For S3, this prefix is '/vsis3/' and more information can be found [here](https://gdal.org/user/virtual_file_systems.html#vsis3). This prefix should be appended to any s3 file path, replacing the 's3://'.
+
+### Other GDAL configurations
+
+An error may occur when accessing public buckets and datasets if you have credentials saved on your device or in your environment. This is because your credentials are being passed to a bucket where the credentials do not exist, even though the data is public. To access a public dataset without passing the aws credentials, set or pass the variable "AWS_NO_SIGN_REQUEST=\[YES/NO\]" to GDAL. Similarly, you may have multiple AWS profiles for different buckets or permissions saved in your .aws/credentials file (Chapter 1). If you want to use a profile other than the default, set or pass the environmental variable "AWS_PROFILE=value" where value is the name of the profile.
+
+For the digital-atlas bucket, a GDAL virtual path this would look like:
+
+```         
+/vsis3/digital-atlas/path/to/my/file.tif
+```
+
+In R terra:
+
+```{r}
+library(terra)
+cloud_cog <- rast('/vsis3/digital-atlas/MapSpam/intermediate/spam2017V2r3_SSA_V_TA-vop_tot.tif')
+```
+
+This will allow reading or writing of any file format compatible with GDAL. However, cloud-optimized formats such as COG will have the best performance.
+
+# Using AWS in R with S3FS
+
+For files that are not geospatial, reading/writing large volumes of data to/from an S3 bucket, or other instances where more flexibility is needed, the [S3FS R package](https://dyfanjones.github.io/s3fs/) is useful. This also provides an interface to change the access permissions of an s3 object. Multiple functions, such as upload and download have an async version which can be used with the 'future' package to do uploads in parallel. This should be used with larger uploads to save time. See the bottom of this page for an example of setting up a parallel upload.
+
+To list buckets, folders, and files in the s3
+
+```{r}
+#list buckets
+s3_dir_ls()
+
+#list top-level directories in the bucket
+s3_dir_ls('s3://digital-atlas')
+
+#list files in the hazard directory
+s3_file_ls('s3://digital-atlas/hazards')
+```
+
+To copy a file or folder to local device from s3 bucket
+
+```{r}
+#download a folder
+s3_dir_download('s3://digital-atlas/hazards/cmip6', '~/cmip6')
+#download an individual file
+s3_file_download('s3://digital-atlas/boundaries/atlas-region_admin2_harmonized.gpkg',
+    '~/Downloads/my-download_name.gpkg')
+###Alternative option which can also be used to copy within a bucket###
+#copy a folder
+s3_dir_copy('s3://digital-atlas/hazards', 'hazards')
+#copy an individual file
+s3_file_copy('s3://digital-atlas/boundaries/atlas-region_admin2_harmonized.gpkg',
+    'my-download_name.gpkg')
+```
+
+To upload a file or folder from a local device to s3 bucket
+
+```{r}
+#upload a folder
+s3_dir_upload('~/path/to/my/local/directory', 's3://mybucket/path/to/dir')
+#upload an individual file
+s3_file_upload('~/path/to/my/local/file.txt', 's3://mybucket/path/file.txt')
+```
+
+To move a file in the s3 bucket
+
+```{r}
+s3_file_move('s3://mybucket/path/my_file.csv', 's3://mybucket/newpath/my_file.csv')
+```
+
+To change file or directory access permissions
+
+```{r}
+s3_file_chmod('s3://path/to/a/file.txt', mode = 'private') # files are by default private, only authorized users can read or write
+s3_file_chmod('s3://path/to/a/different/file.txt', mode = 'public-read') # anyone with the link can see/download the data
+s3_file_chmod('s3://path/to/a/different/full-public/file.txt', mode = 'public-read-write') # DANGEROUS as anyone could edit/delete the file
+```
+
+More complex access permissions (i.e. specific emails, web domains, etc.) can be set in R using the [paws.storage package](https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/), the AWS CLI, BOTO3/S3FS for Python, etc. This may also need to be done by setting up [cross-origin resource sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html) for Javascript and web applications. This can also be retrieved or set in R using a [paws.storage function](https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/).
+
+### Use case 1 - Transfer a tif to s3 and convert it to a Cloud-optimized GeoTIFF
+
+This is to send a single cog, but it can be easily turned into a for loop or a function for use with lapply and friends
+
+```{r}
+# The easy way is to:
+x <- rast(paste0("~/local/path/to/file.tif"))
+writeRaster(x, '/vsis3/digital-atlas/path/to/where/i/want/file_cog.tif', filetype = "COG", overwrite = T, gdal=c("COMPRESS=LZW",of="COG"))
+# However, sometimes this throws an error. If that happens, this method should work:
+x <- rast(paste0("~/local/path/to/file.tif"))
+writeRaster(x, paste0(tmp_d, "/cog_dir/temp_cog.tif"), filetype = "COG", overwrite = T) #convert to cog in temp dir
+s3_file_upload(paste0(tmp_d, "/cog_dir/temp_cog.tif"), "s3://digital-atlas/path/to/where/i/want/file_cog.tif")
+unlink(paste0(tmp_d, "/cog_dir/temp_cog.tif"))
+```
+
+### Use case 2 - Upload a directory to the aws bucket in parallel
+```{r}
+future::availableCores()
+plan('multicore', workers = 5)
+
+future <- s3_dir_upload_async(
+  "~/local/path/to/productivity/data",
+  's3://digital-atlas/productivity/data/',
+  max_batch = fs_bytes("6MB"),
+  )
+
+upload <- value(future)
+```

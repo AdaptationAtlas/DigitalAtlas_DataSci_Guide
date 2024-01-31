@@ -1,0 +1,4 @@
+# The Agricultural Adaptation Data naming conventions
+
+<!-- ## Why?
+It may be easy to overlook the importance of naming conventions, especially when the data is already -->

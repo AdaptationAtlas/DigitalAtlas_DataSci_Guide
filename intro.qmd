@@ -1,0 +1,7 @@
+# Introduction
+
+This handbook is designed to provide an overview of different data types, tools,
+and practices to be used when working with the Adaptation Atlas ecosystem of
+tools and data. It can also be a useful guide for other projects as it describes
+the use of data on AWS S3 buckets, efficient use of cloud-optimized datasets, 
+and notes on some best practices for data management. 

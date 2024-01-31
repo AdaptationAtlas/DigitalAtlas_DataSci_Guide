@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Data Science for the Digital Atlas"
+  author: "Brayden Youngberg"
+  date: "1/16/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    # - file-conventions.qmd
+    - AWS_config.qmd
+    - AWS_basic-use.qmd
+    - cloud_optim_data.qmd
+    - STAC.qmd
+    - references.qmd
+
+# bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

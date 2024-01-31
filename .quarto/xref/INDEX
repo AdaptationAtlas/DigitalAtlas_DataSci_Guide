@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "6d9fc712"
+  },
+  "intro.qmd": {
+    "intro.html": "2c5e9099"
+  },
+  "summary.qmd": {
+    "summary.html": "5d0cba1f"
+  },
+  "references.qmd": {
+    "references.html": "c2fd3f43"
+  },
+  "AWS_config.qmd": {
+    "AWS_config.html": "447e5429"
+  },
+  "AWS_basic-use.qmd": {
+    "AWS_basic-use.html": "99cb02e1"
+  },
+  "STAC.qmd": {
+    "STAC.html": "20b79c01"
+  },
+  "cloud_optim_data.qmd": {
+    "cloud_optim_data.html": "bc76e92c"
+  }
+}
