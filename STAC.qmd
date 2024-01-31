@@ -9,7 +9,7 @@ There is currently no good way of making and editing STAC Metadata in R, so this
 
 ## Building STAC metadata with PySTAC
 Load the required packages
-```{python}
+```{python python.reticulate = FALSE}
 import pystac
 import datetime as dt
 import shapely
@@ -22,7 +22,7 @@ import shapely
 
 Catalogs are the simplest of the possible STAC specifications to make as it does not have to have any specific spatio-temporal extent to describe them. The example below shows how to build a very basic STAC catalog using pystac. 
 
-```{python}
+```{python  python.reticulate = FALSE}
 productivity_catalog = pystac.Catalog( 
   id="crop_productivity_data",
   description="Modelled data of crop productivity",
@@ -32,7 +32,7 @@ productivity_catalog = pystac.Catalog(
 
 ### STAC collections
 STAC collections are very similar to STAC catalogs, except they have extra metadata such as a spatio-temporal extent, keywords, custom fields, and STAC extensions which are explained in more detail in the STAC extension heading. They are a bit more difficult to build due to this extra metadata, but the general process is below. 
-```{python}
+```{python  python.reticulate = FALSE}
 # Build the temporal extent of the collection
 # the strptime function takes a string time and the format it is in such as %Y-%M-%d
 # STAC requires the time to be in UTC, so the replace function forces it into that format
@@ -65,7 +65,7 @@ productivity_paper_collection = pystac.Collection(id = "paper1_data",
 
 ### STAC items
 
-```{python}
+```{python python.reticulate = FALSE}
 
 # In this example the bbox of the item is the same as the collection,
 # but this is not always the case
@@ -100,7 +100,7 @@ Most often there will be more than one item in a collection. It is often useful 
 ### STAC assets
 This is the final piece of the STAC spec. An asset holds the paths to the STAC Item, other data, derived datasets, and other useful assets. It offers a lot of flexibility, you can have a single asset for each date, a different asset for each model or crop, etc. depending on what fits best with the data.
 
-```{python}
+```{python python.reticulate = FALSE}
 
 asset = pystac.Asset(href="s3://bucket/maize_productivity.tif", 
                      media_type=pystac.MediaType.COG)
@@ -123,7 +123,7 @@ for uri in s3_uris:
 ### STAC extensions
 STAC extensions can be added to all of the STAC specifications - catalogs, collections, items, and assets. These extensions provide a more formal metadata framework for certain types/aspects of metadata (i.e. raster, projection, or data cube specific metadata).
 
-```{python}
+```{python  python.reticulate = FALSE}
 proj = pystac.extensions.ProjectionExtension.ext(item, add_if_missing=True) #add to the item
 
 proj.apply(epsg=4326)
@@ -131,7 +131,7 @@ proj.apply(epsg=4326)
 
 ### Combining them all into a final catalog
 
-```{python}
+```{python  python.reticulate = FALSE}
 # add the item to the collection
 productivity_paper_collection.add_item(item)
 # use .add_items() if you have multiple items in a list 
@@ -143,4 +143,4 @@ productivity_catalog.add_child(productivity_paper_collection)
 productivity_catalog.normalize_and_save("~/stac/", catalog_type=pystac.CatalogType.SELF_CONTAINED)
 ```
 
-## Update an existing catalog
+<!-- ## Update an existing catalog -->

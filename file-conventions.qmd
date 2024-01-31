@@ -2,3 +2,26 @@
 
 <!-- ## Why?
 It may be easy to overlook the importance of naming conventions, especially when the data is already -->
+
+Naming formats should be as consistent as possible, especially across similar data sets and directories. For example:
+```
+    {SCENARIO}_{DATE}_{MODEL}_{VARIABLE}_{aggregation_fn}.extension
+```
+
+The naming format used should be stored within the metadata for the data.
+
+In general: 
+
+- Underscores ("_") should be used to seperate metadata chunks
+- Hyphens/Dashes ("-") should be used to separate dates, date ranges and other pieces of information that are in the same group.
+- Forward slashes ("/") should be used to separate directories
+- Periods/Full Stops (".") should only be used before a file extension
+- Dates should be in YYYY-MM-DD format or YYYY
+
+This is a selection of naming conventions used across atlas data:
+
+```{r}
+#| code-fold: true
+#| echo: false
+read.csv("namingScheme.csv", na.strings = "NA") 
+```

@@ -1,7 +1,90 @@
----
-execute:
-  eval: false
----
+# Tips for using ObservableHQ with AWS S3 data
+Observable JS can be used with Quarto or on the [ObservableHQ](https://observablehq.com) website. Data from S3 buckets and other sources can be accessed and used for plots, analysis, etc.
+**Note: There may be multiple errors on this page. These should dissappear upon successful input of an AWS access key and id, along with the bucket and region parameters for the S3 bucket.**
 
-# Tips for using ObservableHQ with AWS S3 buckets
+
+## import the required modules 
+
+```{ojs}
+AWS = await import("https://cdn.skypack.dev/@aws-sdk/client-s3@3.212")
+```
+
+## Acessing a private S3 bucket
+Bucket credentials need to be passed in secret. While they could be hardcoded into the page code, this posses a massive security risk as anyone could access the credentials. This is one of many methods of passing credentials in through an interface:
+```{ojs}
+//| eval: true
+//| code-fold: true
+// import {secret} from "@tmcw/secret";
+// viewof accessKeyId = secret('accessKeyId', {title: "AWS Access Key ID", submit: "Set", description: "localStorage[\"accessKeyId\"]"});
+// viewof secretAccessKey = secret('secretAccessKey', {title: "AWS Secret Access Key", submit: "Set", description: "localStorage[\"secretAccessKey\"]"})
+
+viewof accessKeyId = Inputs.password({label: "Access Key ID"})
+
+viewof secretAccessKey = Inputs.password({label: "Secret Access Key"})
+```
+
+Set the other AWS parameters
+```{ojs}
+// | code-fold: true
+viewof bucket = Inputs.text({label: "Bucket", placeholder: "Enter bucket name", value: "digital-atlas"});
+viewof aws_region = Inputs.text({label: "Region", placeholder: "Enter AWS region", value: "us-east-1"});
+viewof prefix = Inputs.text({label: "Key Prefix", placeholder: "Enter file/folder prefix to search", value: "MapSpam"});
+```
+
+Connect to aws client
+```{ojs}
+s3 = await new AWS.S3Client({
+    region: aws_region,
+    credentials:{
+      accessKeyId: accessKeyId,
+      secretAccessKey: secretAccessKey}
+    })
+```
+
+View contents of bucket:
+```{ojs}
+//| code-fold: true
+response = await s3.send(
+  await new AWS.ListObjectsV2Command({
+    Bucket: bucket,
+    Prefix: prefix,
+    MaxKeys: 100
+  })
+);
+
+Inputs.table(response.Contents, {
+  columns: ["Key", "LastModified", "Size"]
+})
+```
+
+## This can also be done using duckdb without the aws-sdk import
+
+Connect the DuckDB database to the S3 bucket
+```{ojs}
+s3_duckdb = {
+  const con = await DuckDBClient.of();
+  await con.query(`SET s3_region='${aws_region}'`);
+  await con.query(`SET s3_access_key_id='${accessKeyId}'`);
+  await con.query(`SET s3_secret_access_key='${secretAccessKey}'`);
+  return con;
+}
+```
+
+Query the data directly from the S3 bucket and view the result
+```{ojs}
+//| code-fold: true
+sqlQuery = `
+SELECT *
+FROM read_parquet('s3://digital-atlas/risk_prototype/data/exposure/exposure_adm_sum.parquet')
+WHERE exposure = 'vop' 
+AND admin2_name IS NULL 
+AND admin1_name IS NULL
+AND crop = 'wheat'`;
+
+data = s3_duckdb.query(sqlQuery);
+
+Inputs.table(data, {
+  columns: ["admin0_name", "crop", "value", 'exposure']
+});
+```
 
