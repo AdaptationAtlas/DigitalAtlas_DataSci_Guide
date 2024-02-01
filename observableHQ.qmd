@@ -44,7 +44,7 @@ s3 = await new AWS.S3Client({
 View contents of bucket:
 ```{ojs}
 //| code-fold: true
-response = await s3.send(
+ls_objresponse = await s3.send(
   await new AWS.ListObjectsV2Command({
     Bucket: bucket,
     Prefix: prefix,
@@ -52,9 +52,72 @@ response = await s3.send(
   })
 );
 
-Inputs.table(response.Contents, {
+Inputs.table(ls_objresponse.Contents, {
   columns: ["Key", "LastModified", "Size"]
 })
+```
+
+Retrieve a full object from the bucket:
+```{ojs}
+//| eval: false
+fullresponse = await s3.send(
+  new AWS.GetObjectCommand({
+    Key: "risk_prototype/data/hazard_risk_vop/annual/haz_risk_vop_any_adm0_severe.parquet",
+    Bucket: "digital-atlas"
+  })
+);
+table = fullresponse.Body.transformToByteArray()
+```
+
+## Query a parquet and retrieve the result as a json using S3 Select
+
+```{ojs}
+//| code-fold: false
+aws_sqlQuery = `
+  SELECT *
+  FROM S3Object 
+  WHERE admin1_name IS NULL 
+  AND admin2_name IS NULL 
+  and exposure = 'vop'`;
+
+selectresponse = await s3.send(
+  new AWS.SelectObjectContentCommand({
+    ExpressionType: "SQL",
+    Expression: aws_sqlQuery,
+    InputSerialization: {
+      Parquet: {}
+    },
+    OutputSerialization: {
+      JSON: {}
+    },
+    Key: "risk_prototype/data/exposure/exposure_adm_sum.parquet",
+    Bucket: "digital-atlas"
+  })
+); 
+
+json_out = {
+  let jsonData = "";
+  const events = selectresponse.Payload;
+  for await (const event of events) {
+    if (event.Records) {
+      // event.Records.Payload is a buffer containing
+      // a single record, partial records, or multiple records
+      // it is a utf8 buffer array, so it needs to be decoded and cleaned
+      jsonData += new TextDecoder().decode(event.Records.Payload);
+    }
+  }
+  const dataArray = jsonData.split('\n').filter(Boolean);
+  const parsedData = dataArray.map(JSON.parse);
+  return parsedData;
+}
+```
+
+View it in a table: 
+```{ojs}
+//| code-fold: true
+Inputs.table(json_out, {
+  columns: ["admin0_name", "crop", "value"]
+});
 ```
 
 ## This can also be done using duckdb without the aws-sdk import
@@ -72,7 +135,7 @@ s3_duckdb = {
 
 Query the data directly from the S3 bucket and view the result
 ```{ojs}
-//| code-fold: true
+//| code-fold: false
 sqlQuery = `
 SELECT *
 FROM read_parquet('s3://digital-atlas/risk_prototype/data/exposure/exposure_adm_sum.parquet')
@@ -87,4 +150,3 @@ Inputs.table(data, {
   columns: ["admin0_name", "crop", "value", 'exposure']
 });
 ```
-

@@ -1,10 +1,10 @@
 TOP_DIRECTORY,SCENARIO,FUNCTION,ADMIN
 boundaries,historical,sum,adm0
 MapSpam,ssp1,mean,adm1
-Hazards,ssp126,sd,adm2
-Vulnerability,ssp2,max,adm3
-Population,ssp245,min,
-Productivity,ssp3,,
+hazards,ssp126,sd,adm2
+vulnerability,ssp2,max,adm3
+population,ssp245,min,
+productivity,ssp3,total,
 ,ssp370,,
 ,ssp4,,
 ,ssp5,,
