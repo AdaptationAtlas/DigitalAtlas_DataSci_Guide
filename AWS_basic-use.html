@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for the Digital Atlas - 3&nbsp; Basic use of AWS S3 in R</title>
+<title>Data Science for the Digital Atlas - 4&nbsp; Basic use of AWS S3 in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./AWS_basic-use.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./AWS_basic-use.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -124,6 +126,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Science for the Digital Atlas</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,26 +152,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./file-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Agricultural Adaptation Data naming conventions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./AWS_config.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./AWS_basic-use.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cloud_optim_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./STAC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./observableHQ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tips for using ObservableHQ with AWS S3 data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,14 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." id="toc-using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." class="nav-link active" data-scroll-target="#using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc."><span class="header-section-number">3.1</span> Using AWS with GDAL and GDAL based R tools (Terra, Stars, sf, etc.)</a>
+  <li><a href="#using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." id="toc-using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." class="nav-link active" data-scroll-target="#using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc."><span class="header-section-number">4.1</span> Using AWS with GDAL and GDAL based R tools (Terra, Stars, sf, etc.)</a>
   <ul class="collapse">
-  <li><a href="#other-gdal-configurations" id="toc-other-gdal-configurations" class="nav-link" data-scroll-target="#other-gdal-configurations"><span class="header-section-number">3.1.1</span> Other GDAL configurations</a></li>
+  <li><a href="#other-gdal-configurations" id="toc-other-gdal-configurations" class="nav-link" data-scroll-target="#other-gdal-configurations"><span class="header-section-number">4.1.1</span> Other GDAL configurations</a></li>
   </ul></li>
-  <li><a href="#using-aws-in-r-with-s3fs" id="toc-using-aws-in-r-with-s3fs" class="nav-link" data-scroll-target="#using-aws-in-r-with-s3fs"><span class="header-section-number">4</span> Using AWS in R with S3FS</a>
+  <li><a href="#using-aws-in-r-with-s3fs" id="toc-using-aws-in-r-with-s3fs" class="nav-link" data-scroll-target="#using-aws-in-r-with-s3fs"><span class="header-section-number">5</span> Using AWS in R with S3FS</a>
   <ul class="collapse">
-  <li><a href="#use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" id="toc-use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" class="nav-link" data-scroll-target="#use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff"><span class="header-section-number">4.0.1</span> Use case 1 - Transfer a tif to s3 and convert it to a Cloud-optimized GeoTIFF</a></li>
-  <li><a href="#use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" id="toc-use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" class="nav-link" data-scroll-target="#use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel"><span class="header-section-number">4.0.2</span> Use case 2 - Upload a directory to the aws bucket in parallel</a></li>
+  <li><a href="#use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" id="toc-use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" class="nav-link" data-scroll-target="#use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff"><span class="header-section-number">5.0.1</span> Use case 1 - Transfer a tif to s3 and convert it to a Cloud-optimized GeoTIFF</a></li>
+  <li><a href="#use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" id="toc-use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" class="nav-link" data-scroll-target="#use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel"><span class="header-section-number">5.0.2</span> Use case 2 - Upload a directory to the aws bucket in parallel</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></h1>
 </div>
 
 
@@ -218,11 +235,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>This capter introduces the basics of working with the S3 bucket in R.</p>
-<section id="using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc."><span class="header-section-number">3.1</span> Using AWS with GDAL and GDAL based R tools (Terra, Stars, sf, etc.)</h2>
+<section id="using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc." class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="using-aws-with-gdal-and-gdal-based-r-tools-terra-stars-sf-etc."><span class="header-section-number">4.1</span> Using AWS with GDAL and GDAL based R tools (Terra, Stars, sf, etc.)</h2>
 <p>GDAL has special prefixes to access virtual filesystems like S3 and GCS buckets. For S3, this prefix is ‘/vsis3/’ and more information can be found <a href="https://gdal.org/user/virtual_file_systems.html#vsis3">here</a>. This prefix should be appended to any s3 file path, replacing the ‘s3://’.</p>
-<section id="other-gdal-configurations" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="other-gdal-configurations"><span class="header-section-number">3.1.1</span> Other GDAL configurations</h3>
+<section id="other-gdal-configurations" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="other-gdal-configurations"><span class="header-section-number">4.1.1</span> Other GDAL configurations</h3>
 <p>An error may occur when accessing public buckets and datasets if you have credentials saved on your device or in your environment. This is because your credentials are being passed to a bucket where the credentials do not exist, even though the data is public. To access a public dataset without passing the aws credentials, set or pass the variable “AWS_NO_SIGN_REQUEST=[YES/NO]” to GDAL. Similarly, you may have multiple AWS profiles for different buckets or permissions saved in your .aws/credentials file (Chapter 1). If you want to use a profile other than the default, set or pass the environmental variable “AWS_PROFILE=value” where value is the name of the profile.</p>
 <p>For the digital-atlas bucket, a GDAL virtual path this would look like:</p>
 <pre><code>/vsis3/digital-atlas/path/to/my/file.tif</code></pre>
@@ -234,8 +251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This will allow reading or writing of any file format compatible with GDAL. However, cloud-optimized formats such as COG will have the best performance.</p>
 </section>
 </section>
-<section id="using-aws-in-r-with-s3fs" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Using AWS in R with S3FS</h1>
+<section id="using-aws-in-r-with-s3fs" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Using AWS in R with S3FS</h1>
 <p>For files that are not geospatial, reading/writing large volumes of data to/from an S3 bucket, or other instances where more flexibility is needed, the <a href="https://dyfanjones.github.io/s3fs/">S3FS R package</a> is useful. This also provides an interface to change the access permissions of an s3 object. Multiple functions, such as upload and download have an async version which can be used with the ‘future’ package to do uploads in parallel. This should be used with larger uploads to save time. See the bottom of this page for an example of setting up a parallel upload.</p>
 <p>To list buckets, folders, and files in the s3</p>
 <div class="cell">
@@ -280,8 +297,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">s3_file_chmod</span>(<span class="st">'s3://path/to/a/different/full-public/file.txt'</span>, <span class="at">mode =</span> <span class="st">'public-read-write'</span>) <span class="co"># DANGEROUS as anyone could edit/delete the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>More complex access permissions (i.e.&nbsp;specific emails, web domains, etc.) can be set in R using the <a href="https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/">paws.storage package</a>, the AWS CLI, BOTO3/S3FS for Python, etc. This may also need to be done by setting up <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html">cross-origin resource sharing</a> for Javascript and web applications. This can also be retrieved or set in R using a <a href="https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/">paws.storage function</a>.</p>
-<section id="use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff"><span class="header-section-number">4.0.1</span> Use case 1 - Transfer a tif to s3 and convert it to a Cloud-optimized GeoTIFF</h3>
+<section id="use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="use-case-1---transfer-a-tif-to-s3-and-convert-it-to-a-cloud-optimized-geotiff"><span class="header-section-number">5.0.1</span> Use case 1 - Transfer a tif to s3 and convert it to a Cloud-optimized GeoTIFF</h3>
 <p>This is to send a single cog, but it can be easily turned into a for loop or a function for use with lapply and friends</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The easy way is to:</span></span>
@@ -294,8 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">paste0</span>(tmp_d, <span class="st">"/cog_dir/temp_cog.tif"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" class="level3" data-number="4.0.2">
-<h3 data-number="4.0.2" class="anchored" data-anchor-id="use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel"><span class="header-section-number">4.0.2</span> Use case 2 - Upload a directory to the aws bucket in parallel</h3>
+<section id="use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="use-case-2---upload-a-directory-to-the-aws-bucket-in-parallel"><span class="header-section-number">5.0.2</span> Use case 2 - Upload a directory to the aws bucket in parallel</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">availableCores</span>()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(<span class="st">'multicore'</span>, <span class="at">workers =</span> <span class="dv">5</span>)</span>
@@ -334,6 +351,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -550,12 +682,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./AWS_config.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./cloud_optim_data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

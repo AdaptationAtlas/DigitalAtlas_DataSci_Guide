@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for the Digital Atlas - 4&nbsp; Making the most of Cloud Optimized formats</title>
+<title>Data Science for the Digital Atlas - 5&nbsp; Making the most of Cloud Optimized formats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cloud_optim_data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cloud_optim_data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -124,6 +126,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Science for the Digital Atlas</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,26 +152,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./file-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Agricultural Adaptation Data naming conventions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./AWS_config.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up access to the Amazon S3 bucket</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./AWS_basic-use.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cloud_optim_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./STAC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./observableHQ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tips for using ObservableHQ with AWS S3 data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,11 +202,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cloud-optimized-geotiffs-cogs" id="toc-cloud-optimized-geotiffs-cogs" class="nav-link active" data-scroll-target="#cloud-optimized-geotiffs-cogs"><span class="header-section-number">4.1</span> Cloud Optimized geoTIFFs (COGs)</a></li>
-  <li><a href="#zarr" id="toc-zarr" class="nav-link" data-scroll-target="#zarr"><span class="header-section-number">4.2</span> ZARR</a></li>
-  <li><a href="#geoparquet" id="toc-geoparquet" class="nav-link" data-scroll-target="#geoparquet"><span class="header-section-number">4.3</span> geoparquet</a></li>
-  <li><a href="#parquetarrow" id="toc-parquetarrow" class="nav-link" data-scroll-target="#parquetarrow"><span class="header-section-number">4.4</span> PARQUET/ARROW</a></li>
-  <li><a href="#running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" id="toc-running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" class="nav-link" data-scroll-target="#running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets"><span class="header-section-number">4.5</span> Running SQL queries on the cloud for CSV, JSON, and parquet datasets</a></li>
+  <li><a href="#cloud-optimized-geotiffs-cogs" id="toc-cloud-optimized-geotiffs-cogs" class="nav-link active" data-scroll-target="#cloud-optimized-geotiffs-cogs"><span class="header-section-number">5.1</span> Cloud Optimized geoTIFFs (COGs)</a></li>
+  <li><a href="#zarr" id="toc-zarr" class="nav-link" data-scroll-target="#zarr"><span class="header-section-number">5.2</span> ZARR</a></li>
+  <li><a href="#geoparquet" id="toc-geoparquet" class="nav-link" data-scroll-target="#geoparquet"><span class="header-section-number">5.3</span> geoparquet</a></li>
+  <li><a href="#parquetarrow" id="toc-parquetarrow" class="nav-link" data-scroll-target="#parquetarrow"><span class="header-section-number">5.4</span> PARQUET/ARROW</a></li>
+  <li><a href="#running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" id="toc-running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" class="nav-link" data-scroll-target="#running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets"><span class="header-section-number">5.5</span> Running SQL queries on the cloud for CSV, JSON, and parquet datasets</a></li>
   </ul>
 </nav>
     </div>
@@ -198,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Making the most of Cloud Optimized formats</span></h1>
 </div>
 
 
@@ -215,8 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>An excellent introduction to cloud-native geospatial formats can be found <a href="https://guide.cloudnativegeo.org/">here</a>. These cloud optimized formats provide the benefit of parallel and partial reading from the data source, meaning that an area of interest can be a subset from a raster file or an attribute or specific geometry can be extracted from a vector without the need to download and process the entire dataset.</p>
 <p>This chapter is designed to provide an introduction to using some of these formats in R and Python. Conveniently, many of these formats are processed the same way their non-cloud optimized counterparts would be. It should be noted that these cloud optimized formats are still very young, and many tools and functions are still being developed for use with them. This, alongside a very active community, means that this chapter of the document will be very dynamic as new tools become available and formats become more developed.</p>
-<section id="cloud-optimized-geotiffs-cogs" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="cloud-optimized-geotiffs-cogs"><span class="header-section-number">4.1</span> Cloud Optimized geoTIFFs (COGs)</h2>
+<section id="cloud-optimized-geotiffs-cogs" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="cloud-optimized-geotiffs-cogs"><span class="header-section-number">5.1</span> Cloud Optimized geoTIFFs (COGs)</h2>
 <p>As the name implies, this is the cloud-optimized version of a geotiff. It uses the same (.tif) file extension, but it contains extra metadata and internal overviews. These act exactly the same as a normal geotiff and are backward compatible with standard geotiffs. To get the most from this format when using gdal-based tools, <a href="https://gdal.org/user/virtual_file_systems.html">GDAL Virtual File Systems</a> should be used to read/write data from the cloud. To do so, the following should be appended to the start of the url, depending on where the data is: - ‘/vsicurl/’ for http/https/ftp or public aws/gcs buckets - ‘/vsis3/’ for files in s3 buckets - ‘/vsigs/’ for files in google cloud storage - ‘/vsiaz/’ for files in azure cloud storage These will work for both raster and vector data and can be used in R, QGIS, GDAL CLI, etc.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
@@ -233,8 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>private_s3_cog <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'/vsis3/digital-atlas/MapSpam/intermediate/spam2017V2r3_SSA_H_TA-ha_tot.tif'</span>, <span class="at">proxy =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="zarr" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="zarr"><span class="header-section-number">4.2</span> ZARR</h2>
+<section id="zarr" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="zarr"><span class="header-section-number">5.2</span> ZARR</h2>
 <p>This format fills the space of netCDF, HDF5 and similar multi-dimensional data cubes. Currently, the ZARR ecosystem is much more developed for Python; however, there is an active push to bring it to other languages. GDAL has some functionality for working with multi-dimensional arrays and ZARR but it is limited. This limits its use in in R spatial world for the time being. In R, Zarr datasets can be best accessed using the stars package, although with limitations and caveats.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#note that currently read_mdim reads the full data set into memory,</span></span>
@@ -271,8 +288,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>point.Relative_Humidity_2m_12h.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="geoparquet" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="geoparquet"><span class="header-section-number">4.3</span> geoparquet</h2>
+<section id="geoparquet" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="geoparquet"><span class="header-section-number">5.3</span> geoparquet</h2>
 <p>This is one of the main cloud optimized formats for geospatial vector datasets. If GDAL 3.8 is installed it will use the newest geoparquet 1.0.0 spec. The same virtual file system prefixes used for rasters can be used to access these. <strong>Before GDAL 3.5 there is no geoparquet support.</strong> For Python users, geopandas supports the latest 1.0.0 geoparquet spec.</p>
 <p>For R users:</p>
 <div class="cell">
@@ -325,8 +342,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    sfarrow<span class="sc">::</span><span class="fu">read_sf_dataset</span>(<span class="at">find_geom =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="parquetarrow" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="parquetarrow"><span class="header-section-number">4.4</span> PARQUET/ARROW</h2>
+<section id="parquetarrow" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="parquetarrow"><span class="header-section-number">5.4</span> PARQUET/ARROW</h2>
 <p>This is the cloud optimized answser to tabular datasets such as csv, tsv, and excel. The Arrow package for R provides the main interface to this data format and it is very well documented. If you want to understand and take advantage of everything this format and package can offer, check out the <a href="https://arrow.apache.org/docs/r/index.html">Arrow R package documentation</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Using the r Arrow package</span></span>
@@ -352,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#See the next section to learn how to query these using native AWS s3 methods</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets"><span class="header-section-number">4.5</span> Running SQL queries on the cloud for CSV, JSON, and parquet datasets</h2>
+<section id="running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="running-sql-queries-on-the-cloud-for-csv-json-and-parquet-datasets"><span class="header-section-number">5.5</span> Running SQL queries on the cloud for CSV, JSON, and parquet datasets</h2>
 <p>AWS S3 allows users to query data from CSV, Parquet, or JSON files using SQL on the cloud. This allows CSV and JSON files, which are not necissarily considered “cloud-optimized”, to be accessed and queried very quickly from the cloud. This can also be used for parquet files, although the returned data will always be in either csv or json format. <a href="https://nebius.ai/docs/storage/concepts/s3-select-language">This website</a> is a useful help guide to the AWS S3 select SQL syntax.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paws.storage)</span>
@@ -460,6 +477,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -676,12 +808,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./AWS_basic-use.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basic use of AWS S3 in R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./STAC.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spatio-Temporal Asset Catalogs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
